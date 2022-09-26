@@ -1,4 +1,27 @@
 <script setup>
+import {ref} from 'vue';
+import {addTravel} from '../services/CreateData.js';
+
+const country = ref("");
+const description = ref("");
+const places = ref("");
+const prices = ref("");
+
+async function addTravel(){
+    //check validity that no input is empty
+    if (country.value == "" || description.value == "" || places.value == "" || prices.value == "") {
+        alert("Error, empty fields")
+        return false;
+    }
+    const travelInfo = {
+        "country" : country.value,
+        "description" : description.value,
+        "places" : places.value,
+        "prices" : prices.value
+    }
+
+    await addTravel(travelInfo);
+}
 
 
 </script>
@@ -10,13 +33,13 @@
         <h1>Add New Travel</h1>
         <form class="text-fields">
             <h2>Name Of Country</h2>
-            <input type="text" class="input-field" placeholder="Name of coutry" required>
-            <input type="text" class="input-field" placeholder="Few Words for The Country" required>
+            <input v-model="country" type="text" class="input-field" placeholder="Country" required>
+            <input v-model="description" type="text" class="input-field" placeholder="Description" required>
             <h2>Places To Visit</h2>
-            <input type="text" class="input-field" placeholder="Places" required>
+            <input v-model="places" type="text" class="input-field" placeholder="Places" required>
             <h2>Prices</h2>
-            <input type="text" class="input-field" placeholder="Prices" required>
-            <button typpe="Submit" class="submit-btn">Add Travel</button>
+            <input v-model="prices" type="text" class="input-field" placeholder="Prices" required>
+            <button v-on:click="addTravel" class="submit-btn">Add Travel</button>
         </form>
     </div>
 </template>

@@ -1,27 +1,29 @@
 <script setup>
 import { ref } from 'vue';
+import { signIn } from '../services/Authentication.js'
 //create array of inspirational quotes and change it randomly on startup
 const quotes = [
 
 ]
 const quote = "Unlock possibilities"
 
-const username = ref("")
+const email = ref("")
 const password = ref("")
 
 const err = ref(false)
 
 async function login() {
-    if (username.value == "" || password.value == "") {
+    if (email.value == "" || password.value == "") {
         alert("Error, empty fields")
         err.value = true;
         return false;
     }
     const credentials = {
-        "username" : username.value,
+        "email" : email.value,
         "password" : password.value
     }
-    console.log(credentials)
+
+    signIn(credentials.email, credentials.password);
 }
 
 </script>
@@ -32,7 +34,7 @@ async function login() {
             <h1>Login</h1>
             <p>{{ quote }}</p>
             <div class="input-group">
-                <input :class="{'error' : err}" v-model="username" type="text" class="input-field" placeholder="Username">
+                <input v-model="email" type="text" class="input-field" placeholder="someone@somewhere.com">
                 <input v-model="password" type="password" class="input-field" placeholder="Password">
                 <button v-on:click="login" class="submit-btn">Log In</button>
             </div>

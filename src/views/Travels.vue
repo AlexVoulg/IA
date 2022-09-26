@@ -4,7 +4,7 @@ import Destination from '../components/Destination.vue';
 import { db } from '../main.js'
 import { collection, getDocs } from "firebase/firestore"; //it just works
 
-import { addSomething } from "../services/CreateData.js"
+import { addTravel } from "../services/CreateData.js"
 const destinations = ref();
 
 async function getData(){
