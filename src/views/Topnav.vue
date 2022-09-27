@@ -1,11 +1,13 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-const loggedIn = ref(true)
-const admin = ref(true)
+import { useAuth } from '../services/store';
 
 const route = useRoute();
 const routeName = ref(route.name);
+
+//Authentication store
+const auth = useAuth();
 
 //koitaei gia allages sto route.name
 watch(() => route.name, () => {
@@ -22,9 +24,9 @@ watch(() => route.name, () => {
         <router-link :class="[route.name === 'createTravel' ? 'activePage' : '']" v-if="loggedIn" to="/createTravel">Create Travel</router-link>
         <!-- Change if user is logged in -->
         <div class="right">
-            <router-link :class="[route.name === 'admin' ? 'activePage' : '']" v-if="admin" to="/admin">Admin</router-link>
             <router-link :class="[route.name === 'Account' ? 'activePage' : '']" to="/account">Account</router-link>
-            <router-link :class="[route.name === 'login' ? 'activePage' : '']" to="/login">Login</router-link>
+            <router-link v-if="auth.admin.value" :class="[route.name === 'admin' ? 'activePage' : '']" to="/admin">Admin</router-link>
+            <router-link v-if="!auth.loggedIn.value" :class="[route.name === 'login' ? 'activePage' : '']" to="/login">Login</router-link>
         </div>
 
     </div>

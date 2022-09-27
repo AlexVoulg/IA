@@ -22,6 +22,5 @@ export async function addTravel(travelInfo) {
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
         console.error(e.message);
-        console.error("Error adding document: ", e);
     }
 }

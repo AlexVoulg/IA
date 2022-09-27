@@ -29,9 +29,3 @@ export async function signIn(email, password){
         alert(errorMessage)
     });
 }
-
-export async function getCurrentUser(){
-    const auth = getAuth();
-    if (auth.currentUser != null)
-        return auth.currentUser;
-}

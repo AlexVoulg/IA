@@ -1,15 +1,5 @@
 <script setup>
 import Topnav from "./views/Topnav.vue";
-
-import { getCurrentUser } from "./services/Authentication.js";
-
-let user;
-async function getUser(){
-  user = await getCurrentUser();
-  console.log(user);
-} 
-
-getUser();
 </script> 
 <template>
   <!-- <h1 v-for="trip in trips" :key="trip"> 

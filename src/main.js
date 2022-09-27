@@ -1,10 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
-import { getAuth, onAuthStateChanged, updateProfile, } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getFirestore } from "firebase/firestore";
+import { bindUser } from './services/store';
+import { createApp } from 'vue'
+import './style.css'
+import App from './App.vue'
+import router from './router'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,16 +23,8 @@ const firebaseConfig = {
 // Initialize Firebase
 export const firebase = initializeApp(firebaseConfig);
 export const db = getFirestore(firebase);
-const auth = getAuth(firebase);
-console.log(auth.currentUser);
 
+(async () => bindUser())();
 
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-
-import router from './router'
 const app = createApp(App);
-app.use(router);
-
-app.mount('#app')
+app.use(router).mount('#app')
