@@ -13,8 +13,6 @@ export async function bindUser() {
         if (user) {
             loggedIn.value = true;
             currentUser.value = user
-            console.log("Inside state change")
-            console.log(user);
             //TODO add check for admin
         }
         else {

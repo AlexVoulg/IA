@@ -4,21 +4,19 @@ const props = defineProps({
     trip: Object
 })
 
-function route(){
-
-}   
 
 </script>
 
 <template>
     <div class="container" >
+        <p>id : {{trip.id}}</p>
         <h1 class="titles"> {{trip.country}} </h1>
         <p>{{trip.description}}</p>
         <h2>Places to visit</h2>
         <p>{{trip.places}}</p>
         <h2>Prices</h2>
         <p>{{trip.prices}}</p>
-        <button class="interestedButton" id="interestedButton">Show More</button>
+        <button  class="likeBtn"><i class="fas fa-heart"></i></button>
     </div>
 </template>
 
@@ -26,7 +24,6 @@ function route(){
 .container {
     display: flex;
     width: 100%;
-    flex-wrap: wrap;
     color: white;
     flex-direction: column;
     background-color: rgb(233, 233, 233);
@@ -38,52 +35,15 @@ function route(){
     margin: 10px 10px 10px 10px;
     width: fit-content;
     min-width: 320px;
-
-    animation: 200ms all ease;
+    align-items: center;
+    text-align: left;
+    
+    
+    transition: 200ms all ease;
 
     &:hover {
         box-shadow: 0px 15px 20px 1px rgba(0, 0, 0, 0.185);
         transform: scale(1.01);
-    }
-}
-
-
-.interestedButton {
-    background-color: #191919;
-    color: rgb(233, 233, 233);
-    border: 1px solid rgba(0, 0, 0, 0.200);
-    border-radius: 5px;
-    height: 30px;
-    width: 78px;
-    border: none;
-
-    &:hover {
-        cursor: pointer;
-        background-color: rgba(142, 129, 252, 0.8);
-        color: black;
-        height: 35px;
-        width: 83px;
-        box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.185);
-    }
-}
-
-
-.moreInfoButton {
-    background-color: black;
-    color: white;
-    border: 1px solid rgba(0, 0, 0, 0.200);
-    border-radius: 5px;
-    height: 30px;
-    width: 90px;
-
-    &:hover {
-        cursor: pointer;
-        background-color: aqua;
-        color: black;
-        height: 35px;
-        width: 95px;
-        box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.185);
-
     }
 }
 
@@ -92,4 +52,24 @@ function route(){
     color: rgba(142, 129, 252, 0.8);
     font-size: 2rem;
 }
+
+.likeBtn{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    transition: all 100ms ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    &:hover{
+        background-color: red;
+        color: white;      
+    }
+}
+
+
+
 </style>

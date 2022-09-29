@@ -4,10 +4,18 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getFirestore } from "firebase/firestore";
 import { bindUser } from './services/store';
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import './style.css';
+import App from './App.vue';
+import router from './router';
+
+/* import font awesome icon component */
+import { dom, library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+library.add(fas);
+library.add(fab);
+dom.watch();
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

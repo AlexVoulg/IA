@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import { signIn } from '../services/Authentication.js'
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 //create array of inspirational quotes and change it randomly on startup
 const quotes = [
 
@@ -12,7 +15,7 @@ const password = ref("")
 
 const err = ref(false)
 
-async function login() {
+function login() {
     if (email.value == "" || password.value == "") {
         alert("Error, empty fields")
         err.value = true;
@@ -23,7 +26,8 @@ async function login() {
         "password" : password.value
     }
 
-    signIn(credentials.email, credentials.password);
+    signIn(credentials.email, credentials.password)
+    router.push('/');
 }
 
 </script>
